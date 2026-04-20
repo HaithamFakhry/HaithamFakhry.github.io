@@ -187,18 +187,6 @@ const PROJECTS = [
     "descAr": "هوية سلسلة صيدليات بفكرة القلب والكنز."
   },
   {
-    "id": "nameiss-estate",
-    "category": "branding",
-    "image": "logo_nameiss.jpg",
-    "year": "2019",
-    "titleEn": "Nameiss — Real Estate Development",
-    "titleAr": "أسطورة النميص — تطوير عقاري",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Real estate development logo combining architectural elements and palm tree motifs.",
-    "descAr": "شعار تطوير عقاري يجمع بين العناصر المعمارية ورمز النخيل."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -209,6 +197,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "nameiss-estate",
+    "category": "branding",
+    "image": "logo_nameiss.jpg",
+    "year": "2019",
+    "titleEn": "Nameiss — Real Estate Development",
+    "titleAr": "أسطورة النميص — تطوير عقاري",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Real estate development logo combining architectural elements and palm tree motifs.",
+    "descAr": "شعار تطوير عقاري يجمع بين العناصر المعمارية ورمز النخيل."
   },
   {
     "id": "alwahda-contracting",
