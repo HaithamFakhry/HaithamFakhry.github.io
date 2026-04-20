@@ -235,18 +235,6 @@ const PROJECTS = [
     "descAr": "تصميم بوست مؤسسي لرزقانة."
   },
   {
-    "id": "covers-collection",
-    "category": "print",
-    "image": "grid_covers.jpg",
-    "year": "2020-2024",
-    "titleEn": "Page Covers — Full Collection",
-    "titleAr": "أغلفة الصفحات — المجموعة الكاملة",
-    "categoryEn": "Cover Design",
-    "categoryAr": "تصميم غلاف",
-    "descEn": "Collection of cover designs for Facebook, Instagram, and various digital platforms.",
-    "descAr": "مجموعة تصاميم أغلفة لفيسبوك وإنستغرام ومنصات رقمية متنوعة."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -257,6 +245,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "covers-collection",
+    "category": "print",
+    "image": "grid_covers.jpg",
+    "year": "2020-2024",
+    "titleEn": "Page Covers — Full Collection",
+    "titleAr": "أغلفة الصفحات — المجموعة الكاملة",
+    "categoryEn": "Cover Design",
+    "categoryAr": "تصميم غلاف",
+    "descEn": "Collection of cover designs for Facebook, Instagram, and various digital platforms.",
+    "descAr": "مجموعة تصاميم أغلفة لفيسبوك وإنستغرام ومنصات رقمية متنوعة."
   },
   {
     "id": "logos-collection",
