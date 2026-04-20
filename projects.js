@@ -163,18 +163,6 @@ const PROJECTS = [
     "descAr": "شعار متجر DODO بطابع ودود وجذاب."
   },
   {
-    "id": "house-wear",
-    "category": "branding",
-    "image": "logo_housewear.jpg",
-    "year": "2022",
-    "titleEn": "House Wear — Fashion Identity",
-    "titleAr": "هاوس وير — هوية أزياء",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Elegant fashion identity combining a house symbol with clothing hangers.",
-    "descAr": "هوية أزياء أنيقة تجمع بين رمز المنزل وعلاقات الملابس."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -185,6 +173,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "house-wear",
+    "category": "branding",
+    "image": "logo_housewear.jpg",
+    "year": "2022",
+    "titleEn": "House Wear — Fashion Identity",
+    "titleAr": "هاوس وير — هوية أزياء",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Elegant fashion identity combining a house symbol with clothing hangers.",
+    "descAr": "هوية أزياء أنيقة تجمع بين رمز المنزل وعلاقات الملابس."
   },
   {
     "id": "kanz-alsehha",
