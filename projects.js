@@ -175,18 +175,6 @@ const PROJECTS = [
     "descAr": "هوية أزياء أنيقة تجمع بين رمز المنزل وعلاقات الملابس."
   },
   {
-    "id": "kanz-alsehha",
-    "category": "branding",
-    "image": "logo_kanz.jpg",
-    "year": "2020",
-    "titleEn": "Kanz Al-Sehha Pharmacies",
-    "titleAr": "صيدليات كنز الصحة",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Pharmacy chain identity featuring a heart and treasure concept.",
-    "descAr": "هوية سلسلة صيدليات بفكرة القلب والكنز."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -197,6 +185,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "kanz-alsehha",
+    "category": "branding",
+    "image": "logo_kanz.jpg",
+    "year": "2020",
+    "titleEn": "Kanz Al-Sehha Pharmacies",
+    "titleAr": "صيدليات كنز الصحة",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Pharmacy chain identity featuring a heart and treasure concept.",
+    "descAr": "هوية سلسلة صيدليات بفكرة القلب والكنز."
   },
   {
     "id": "nameiss-estate",
