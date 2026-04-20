@@ -151,18 +151,6 @@ const PROJECTS = [
     "descAr": "هوية بصرية لعلامة لوتس للحلويات، مع شعار متقن مستوحى من زهرة اللوتس."
   },
   {
-    "id": "dodo-store",
-    "category": "branding",
-    "image": "logo_dodo.jpg",
-    "year": "2020",
-    "titleEn": "DODO Store — Retail Logo",
-    "titleAr": "دودو ستور — شعار متجر",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Friendly retail logo for DODO Store.",
-    "descAr": "شعار متجر DODO بطابع ودود وجذاب."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -173,6 +161,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "dodo-store",
+    "category": "branding",
+    "image": "logo_dodo.jpg",
+    "year": "2020",
+    "titleEn": "DODO Store — Retail Logo",
+    "titleAr": "دودو ستور — شعار متجر",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Friendly retail logo for DODO Store.",
+    "descAr": "شعار متجر DODO بطابع ودود وجذاب."
   },
   {
     "id": "house-wear",
