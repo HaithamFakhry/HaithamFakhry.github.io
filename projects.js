@@ -247,18 +247,6 @@ const PROJECTS = [
     "descAr": "مجموعة تصاميم أغلفة لفيسبوك وإنستغرام ومنصات رقمية متنوعة."
   },
   {
-    "id": "logos-collection",
-    "category": "branding",
-    "image": "grid_logos.jpg",
-    "year": "2018-2024",
-    "titleEn": "Logo Collection — Full Portfolio",
-    "titleAr": "مجموعة الشعارات — البورتفوليو الكامل",
-    "categoryEn": "Branding",
-    "categoryAr": "هوية بصرية",
-    "descEn": "Complete collection of logo designs across various industries.",
-    "descAr": "مجموعة شعارات متنوعة عبر قطاعات متعددة."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -269,5 +257,17 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "logos-collection",
+    "category": "branding",
+    "image": "grid_logos.jpg",
+    "year": "2018-2024",
+    "titleEn": "Logo Collection — Full Portfolio",
+    "titleAr": "مجموعة الشعارات — البورتفوليو الكامل",
+    "categoryEn": "Branding",
+    "categoryAr": "هوية بصرية",
+    "descEn": "Complete collection of logo designs across various industries.",
+    "descAr": "مجموعة شعارات متنوعة عبر قطاعات متعددة."
   }
 ];
