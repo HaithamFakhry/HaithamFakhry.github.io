@@ -139,18 +139,6 @@ const PROJECTS = [
     "descAr": "هوية فعالية وحملة سوشيال ميديا لحفل التكريم السنوي لنادي ههيا الرياضي."
   },
   {
-    "id": "lotus-sweets",
-    "category": "branding",
-    "image": "logo_lotus.jpg",
-    "year": "2021",
-    "titleEn": "Lotus Sweets — Identity",
-    "titleAr": "لوتس سويتس — هوية بصرية",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Brand identity for Lotus Sweets — a premium sweets brand featuring a refined lotus mark.",
-    "descAr": "هوية بصرية لعلامة لوتس للحلويات، مع شعار متقن مستوحى من زهرة اللوتس."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -161,6 +149,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "lotus-sweets",
+    "category": "branding",
+    "image": "logo_lotus.jpg",
+    "year": "2021",
+    "titleEn": "Lotus Sweets — Identity",
+    "titleAr": "لوتس سويتس — هوية بصرية",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Brand identity for Lotus Sweets — a premium sweets brand featuring a refined lotus mark.",
+    "descAr": "هوية بصرية لعلامة لوتس للحلويات، مع شعار متقن مستوحى من زهرة اللوتس."
   },
   {
     "id": "dodo-store",
