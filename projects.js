@@ -199,18 +199,6 @@ const PROJECTS = [
     "descAr": "شعار تطوير عقاري يجمع بين العناصر المعمارية ورمز النخيل."
   },
   {
-    "id": "alwahda-contracting",
-    "category": "branding",
-    "image": "logo_wahda.jpg",
-    "year": "2019",
-    "titleEn": "Al Wahda Contracting",
-    "titleAr": "الوهدة للمقاولات العامة",
-    "categoryEn": "Logo Design",
-    "categoryAr": "تصميم شعار",
-    "descEn": "Corporate identity for a contracting company combining buildings and growth charts.",
-    "descAr": "هوية شركة مقاولات تجمع بين المباني ومؤشرات النمو."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -221,6 +209,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "alwahda-contracting",
+    "category": "branding",
+    "image": "logo_wahda.jpg",
+    "year": "2019",
+    "titleEn": "Al Wahda Contracting",
+    "titleAr": "الوهدة للمقاولات العامة",
+    "categoryEn": "Logo Design",
+    "categoryAr": "تصميم شعار",
+    "descEn": "Corporate identity for a contracting company combining buildings and growth charts.",
+    "descAr": "هوية شركة مقاولات تجمع بين المباني ومؤشرات النمو."
   },
   {
     "id": "social-collection",
