@@ -223,18 +223,6 @@ const PROJECTS = [
     "descAr": "مجموعة شاملة من تصاميم السوشيال ميديا لعلامات متعددة."
   },
   {
-    "id": "rezkana",
-    "category": "social",
-    "image": "sm_egypt.jpg",
-    "year": "2020",
-    "titleEn": "Rezkana — Corporate Post",
-    "titleAr": "رزقانة — بوست شركة",
-    "categoryEn": "Corporate",
-    "categoryAr": "شركات",
-    "descEn": "Corporate post design for Rezkana.",
-    "descAr": "تصميم بوست مؤسسي لرزقانة."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -245,6 +233,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "rezkana",
+    "category": "social",
+    "image": "sm_egypt.jpg",
+    "year": "2020",
+    "titleEn": "Rezkana — Corporate Post",
+    "titleAr": "رزقانة — بوست شركة",
+    "categoryEn": "Corporate",
+    "categoryAr": "شركات",
+    "descEn": "Corporate post design for Rezkana.",
+    "descAr": "تصميم بوست مؤسسي لرزقانة."
   },
   {
     "id": "covers-collection",
