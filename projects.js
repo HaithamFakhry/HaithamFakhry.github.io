@@ -211,18 +211,6 @@ const PROJECTS = [
     "descAr": "هوية شركة مقاولات تجمع بين المباني ومؤشرات النمو."
   },
   {
-    "id": "social-collection",
-    "category": "social",
-    "image": "grid_social.jpg",
-    "year": "2020-2024",
-    "titleEn": "Social Media — Full Collection",
-    "titleAr": "سوشيال ميديا — المجموعة الكاملة",
-    "categoryEn": "Collection",
-    "categoryAr": "مجموعة",
-    "descEn": "Comprehensive collection of social media designs across multiple brands and sectors.",
-    "descAr": "مجموعة شاملة من تصاميم السوشيال ميديا لعلامات متعددة."
-  },
-  {
     "id": "ezzat-jewels",
     "category": "social",
     "year": "2026",
@@ -233,6 +221,18 @@ const PROJECTS = [
     "descAr": "",
     "descEn": "",
     "image": "project-1776701131325.png"
+  },
+  {
+    "id": "social-collection",
+    "category": "social",
+    "image": "grid_social.jpg",
+    "year": "2020-2024",
+    "titleEn": "Social Media — Full Collection",
+    "titleAr": "سوشيال ميديا — المجموعة الكاملة",
+    "categoryEn": "Collection",
+    "categoryAr": "مجموعة",
+    "descEn": "Comprehensive collection of social media designs across multiple brands and sectors.",
+    "descAr": "مجموعة شاملة من تصاميم السوشيال ميديا لعلامات متعددة."
   },
   {
     "id": "rezkana",
