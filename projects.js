@@ -247,18 +247,6 @@ const PROJECTS = [
     "descAr": "مجموعة تصاميم أغلفة لفيسبوك وإنستغرام ومنصات رقمية متنوعة."
   },
   {
-    "id": "ezzat-jewels",
-    "category": "social",
-    "year": "2026",
-    "titleAr": "تصميم سوشيال ميديا لشهر رمضان",
-    "titleEn": "Social media design for Ramadan",
-    "categoryAr": "سوشيال ميديا - مصر",
-    "categoryEn": "e.g Social media",
-    "descAr": "",
-    "descEn": "",
-    "image": "project-1776701131325.png"
-  },
-  {
     "id": "logos-collection",
     "category": "branding",
     "image": "grid_logos.jpg",
@@ -269,5 +257,17 @@ const PROJECTS = [
     "categoryAr": "هوية بصرية",
     "descEn": "Complete collection of logo designs across various industries.",
     "descAr": "مجموعة شعارات متنوعة عبر قطاعات متعددة."
+  },
+  {
+    "id": "ezzat-jewels",
+    "category": "social",
+    "year": "2026",
+    "titleAr": "تصميم سوشيال ميديا لشهر رمضان",
+    "titleEn": "Social media design for Ramadan",
+    "categoryAr": "سوشيال ميديا - مصر",
+    "categoryEn": "e.g Social media",
+    "descAr": "",
+    "descEn": "",
+    "image": "project-1776701131325.png"
   }
 ];
