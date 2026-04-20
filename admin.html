@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم — هيثم فخري</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --navy-deepest: #061E2A;
+      --navy-deep:    #0A2838;
+      --navy-mid:     #1C546D;
+      --teal:         #5F9498;
+      --teal-light:   #7FB4B8;
+      --teal-bright:  #8FD4D8;
+      --off-white:    #F3F5F4;
+      --white-soft:   #FAFBFA;
+      --muted:        #8A9BA3;
+      --muted-dark:   #5A6B73;
+      --line:         rgba(243, 245, 244, 0.08);
+      --line-strong:  rgba(243, 245, 244, 0.15);
+      --danger:       #E57373;
+      --success:      #81C784;
+      --warning:      #FFB74D;
+      
+      --font-ar: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+      --font-en: 'IBM Plex Sans', system-ui, sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-ar);
+      background: var(--navy-deepest);
+      color: var(--off-white);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      direction: rtl;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(95,148,152,0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    img { display: block; max-width: 100%; height: auto; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    input, textarea, select { font: inherit; }
+    
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .header {
+      background: var(--navy-deep);
+      border-bottom: 1px solid var(--line-strong);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--white-soft);
+    }
+    .logo-mark {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy-deepest);
+      box-shadow: 0 0 20px rgba(95, 148, 152, 0.4);
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .user-info img {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--teal);
+    }
+    .user-info .name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn-logout {
+      padding: 8px 16px;
+      background: var(--line-strong);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-logout:hover {
+      background: var(--danger);
+      color: white;
+    }
+    
+    /* ============================================================
+       CONTAINER
+       ============================================================ */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* ============================================================
+       LOGIN SCREEN
+       ============================================================ */
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      padding: 48px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--teal), transparent, transparent);
+      animation: rotateLogin 8s linear infinite;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    @keyframes rotateLogin {
+      to { transform: rotate(360deg); }
+    }
+    .login-card > * { position: relative; z-index: 1; }
+    .login-card .logo-mark {
+      width: 64px; height: 64px;
+      margin: 0 auto 24px;
+      font-size: 28px;
+    }
+    .login-card h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--white-soft);
+    }
+    .login-card p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 14px;
+    }
+    .token-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(6, 30, 42, 0.8);
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--white-soft);
+      font-family: var(--font-en);
+      font-size: 13px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    .token-input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(95, 148, 152, 0.15);
+    }
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      color: var(--navy-deepest);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.3s;
+      box-shadow: 0 0 24px rgba(95, 148, 152, 0.3);
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 30px rgba(95, 148, 152, 0.5);
+    }
+    .help-box {
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(95, 148, 152, 0.08);
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .help-box a {
+      color: var(--teal-bright);
+      text-decoration: underline;
+    }
+    .help-box strong {
+      color: var(--teal-bright);
+    }
+    
+    /* ============================================================
+       STATS
+       ============================================================ */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-box {
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .stat-box:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+    .stat-box.active {
+      border-color: var(--teal);
+      background: rgba(95, 148, 152, 0.08);
+    }
+    .stat-box .num {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--teal-bright);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-box .label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    /* ============================================================
+       TOOLBAR
+       ============================================================ */
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 12px 44px 12px 16px;
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      color: var(--white-soft);
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    .search-box::before {
+      content: '🔍';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+    .btn-primary {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      color: var(--navy-deepest);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.25s;
+      box-shadow: 0 0 20px rgba(95, 148, 152, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 30px rgba(95, 148, 152, 0.4);
+    }
+    .btn-secondary {
+      padding: 12px 20px;
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      color: var(--off-white);
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal-bright);
+    }
+    
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .filter-chip {
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .filter-chip:hover {
+      color: var(--off-white);
+      border-color: var(--teal);
+    }
+    .filter-chip.active {
+      background: var(--teal);
+      color: var(--navy-deepest);
+      border-color: var(--teal);
+      font-weight: 700;
+    }
+    
+    /* ============================================================
+       PROJECTS LIST
+       ============================================================ */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .project-row {
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.25s;
+    }
+    .project-row:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .project-row .thumb {
+      width: 100px; height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--navy-deepest);
+      border: 1px solid var(--line);
+    }
+    .project-row .thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .project-row .info h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white-soft);
+      margin-bottom: 4px;
+    }
+    .project-row .info .title-en {
+      font-family: var(--font-en);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .project-row .info .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .project-row .info .meta span {
+      padding: 3px 10px;
+      background: rgba(95, 148, 152, 0.1);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--teal-bright);
+      font-weight: 500;
+    }
+    .project-row .actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-icon {
+      width: 40px; height: 40px;
+      background: var(--navy-deepest);
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .btn-icon:hover { transform: translateY(-2px); }
+    .btn-icon.edit:hover { background: var(--teal); color: var(--navy-deepest); border-color: var(--teal); }
+    .btn-icon.delete:hover { background: var(--danger); color: white; border-color: var(--danger); }
+    .btn-icon.move-up:hover, .btn-icon.move-down:hover { background: var(--warning); color: var(--navy-deepest); border-color: var(--warning); }
+    
+    @media (max-width: 768px) {
+      .project-row { grid-template-columns: 80px 1fr; }
+      .project-row .actions { grid-column: 1 / -1; justify-content: flex-end; }
+      .project-row .thumb { width: 80px; height: 80px; }
+    }
+    
+    /* ============================================================
+       MODAL (edit / add project)
+       ============================================================ */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 30, 42, 0.92);
+      backdrop-filter: blur(14px);
+      z-index: 200;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+    .modal-bg.open { display: flex; }
+    .modal-card {
+      background: var(--navy-deep);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      max-width: 800px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-head h2 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .close-modal {
+      width: 36px; height: 36px;
+      background: var(--navy-deepest);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s;
+    }
+    .close-modal:hover {
+      background: var(--danger);
+      color: white;
+      transform: rotate(90deg);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal-bright);
+      letter-spacing: 0.04em;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 12px 14px;
+      background: rgba(6, 30, 42, 0.6);
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--white-soft);
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .form-field input[lang="en"],
+    .form-field textarea[lang="en"],
+    .form-field input.ltr {
+      font-family: var(--font-en);
+      direction: ltr;
+      text-align: left;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: rgba(6, 30, 42, 0.9);
+    }
+    .form-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    
+    /* Image upload */
+    .image-upload {
+      border: 2px dashed var(--line-strong);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    .image-upload:hover {
+      border-color: var(--teal);
+      background: rgba(95, 148, 152, 0.05);
+    }
+    .image-upload.has-image {
+      padding: 0;
+      border: 1px solid var(--line-strong);
+      overflow: hidden;
+    }
+    .image-upload .preview {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .image-upload .preview img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .image-upload .preview .change-btn {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      padding: 8px 16px;
+      background: rgba(6, 30, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .image-upload .placeholder-text {
+      padding: 40px 20px;
+    }
+    .image-upload .placeholder-text .icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+      opacity: 0.5;
+    }
+    .image-upload .placeholder-text .text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .image-upload input[type="file"] { display: none; }
+    
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .modal-actions button { flex: 1; }
+    .btn-danger {
+      padding: 14px;
+      background: var(--danger);
+      color: white;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .btn-danger:hover { opacity: 0.9; }
+    
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .modal-card { padding: 24px; }
+    }
+    
+    /* ============================================================
+       TOAST NOTIFICATIONS
+       ============================================================ */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 50%;
+      transform: translateX(50%) translateY(100px);
+      background: var(--navy-deep);
+      border: 1px solid var(--teal);
+      border-radius: 12px;
+      padding: 14px 22px;
+      color: var(--white-soft);
+      font-weight: 600;
+      font-size: 14px;
+      z-index: 300;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .toast.show {
+      transform: translateX(50%) translateY(0);
+      opacity: 1;
+    }
+    .toast.error { border-color: var(--danger); }
+    .toast.success { border-color: var(--success); }
+    .toast .icon { font-size: 18px; }
+    
+    /* ============================================================
+       LOADING SPINNER
+       ============================================================ */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 30, 42, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .loading-overlay.open { display: flex; }
+    .spinner {
+      width: 48px; height: 48px;
+      border: 3px solid var(--line-strong);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .loading-text {
+      color: var(--teal-bright);
+      font-weight: 600;
+    }
+    
+    /* ============================================================
+       EMPTY STATE
+       ============================================================ */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .empty-state .icon { font-size: 48px; opacity: 0.3; margin-bottom: 16px; }
+    
+    /* Hidden until login */
+    .app-screen { display: none; }
+    .app-screen.active { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     LOGIN SCREEN
+     ================================================================ -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <div class="logo-mark">H</div>
+    <h1>لوحة التحكم</h1>
+    <p>سجّل دخولك للتحكم في محتوى البورتفوليو</p>
+    
+    <input 
+      type="password" 
+      class="token-input ltr" 
+      id="token-input" 
+      placeholder="GitHub Personal Access Token"
+      style="direction: ltr; text-align: left;"
+    >
+    <button class="btn-login" onclick="login()">دخول</button>
+    
+    <div class="help-box">
+      <strong>🔑 إزاي تحصل على Token؟</strong><br>
+      1. افتح <a href="https://github.com/settings/tokens/new?description=Portfolio%20Admin&scopes=repo" target="_blank">صفحة GitHub Tokens</a><br>
+      2. Expiration: اختر <strong>90 days</strong> أو <strong>No expiration</strong><br>
+      3. Scopes: علّم <strong>✅ repo</strong><br>
+      4. اضغط <strong>Generate token</strong><br>
+      5. انسخ الـ token والصقه هنا<br>
+      <br>
+      <strong>⚠️ مهم:</strong> الـ token محفوظ محلياً في المتصفح فقط، وما بيترفعش على GitHub.
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     APP SCREEN
+     ================================================================ -->
+<div class="app-screen" id="app-screen">
+  
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark">H</div>
+        <span>لوحة التحكم — هيثم فخري</span>
+      </div>
+      <div class="user-info">
+        <img id="user-avatar" src="" alt="">
+        <span class="name" id="user-name">User</span>
+        <button class="btn-logout" onclick="logout()">خروج</button>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container">
+    
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-box active" data-filter="all">
+        <div class="num" id="count-all">0</div>
+        <div class="label">إجمالي المشاريع</div>
+      </div>
+      <div class="stat-box" data-filter="campaign">
+        <div class="num" id="count-campaign">0</div>
+        <div class="label">حملات</div>
+      </div>
+      <div class="stat-box" data-filter="social">
+        <div class="num" id="count-social">0</div>
+        <div class="label">سوشيال ميديا</div>
+      </div>
+      <div class="stat-box" data-filter="branding">
+        <div class="num" id="count-branding">0</div>
+        <div class="label">هوية بصرية</div>
+      </div>
+    </div>
+    
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="ابحث عن مشروع...">
+      </div>
+      <button class="btn-secondary" onclick="reloadProjects()">🔄 تحديث</button>
+      <button class="btn-primary" onclick="openAddModal()">+ إضافة مشروع</button>
+    </div>
+    
+    <!-- Projects list -->
+    <div class="projects-list" id="projects-list"></div>
+    
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="icon">📭</div>
+      <div>لا توجد مشاريع مطابقة</div>
+    </div>
+    
+  </main>
+</div>
+
+<!-- ================================================================
+     EDIT / ADD MODAL
+     ================================================================ -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 id="modal-title">تعديل مشروع</h2>
+      <button class="close-modal" onclick="closeModal()">×</button>
+    </div>
+    
+    <!-- Image upload -->
+    <label class="image-upload" id="image-upload" for="image-file">
+      <div class="placeholder-text">
+        <div class="icon">🖼️</div>
+        <div class="text">اضغط هنا لرفع صورة للمشروع</div>
+      </div>
+      <input type="file" id="image-file" accept="image/*" onchange="handleImageSelect(event)">
+    </label>
+    
+    <form id="project-form" onsubmit="saveProject(event)">
+      <input type="hidden" id="field-original-id">
+      <input type="hidden" id="field-original-image">
+      
+      <div class="form-row">
+        <div class="form-field">
+          <label>المعرف (ID) — بالإنجليزي فقط</label>
+          <input type="text" id="field-id" class="ltr" required pattern="[a-z0-9\-]+" 
+                 placeholder="my-new-project" title="حروف إنجليزية صغيرة وأرقام و - فقط">
+        </div>
+        <div class="form-field">
+          <label>الفئة</label>
+          <select id="field-category" required>
+            <option value="campaign">حملات (Campaign)</option>
+            <option value="social">سوشيال ميديا (Social Media)</option>
+            <option value="branding">هوية بصرية (Branding)</option>
+            <option value="print">مطبوعات (Print)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-field">
+          <label>السنة</label>
+          <input type="text" id="field-year" class="ltr" required placeholder="2025">
+        </div>
+        <div class="form-field">
+          <!-- spacer -->
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-field">
+          <label>العنوان بالعربي</label>
+          <input type="text" id="field-title-ar" required placeholder="اسم المشروع">
+        </div>
+        <div class="form-field">
+          <label>Title in English</label>
+          <input type="text" id="field-title-en" class="ltr" required placeholder="Project Title">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-field">
+          <label>اسم الفئة بالعربي</label>
+          <input type="text" id="field-category-ar" required placeholder="مثلاً: حملة">
+        </div>
+        <div class="form-field">
+          <label>Category in English</label>
+          <input type="text" id="field-category-en" class="ltr" required placeholder="e.g., Campaign">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-field full">
+          <label>الوصف بالعربي</label>
+          <textarea id="field-desc-ar" placeholder="وصف تفصيلي للمشروع..."></textarea>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-field full">
+          <label>Description in English</label>
+          <textarea id="field-desc-en" class="ltr" placeholder="Detailed project description..."></textarea>
+        </div>
+      </div>
+      
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closeModal()">إلغاء</button>
+        <button type="submit" class="btn-primary">💾 حفظ التعديلات</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="icon" id="toast-icon">✓</span>
+  <span id="toast-text">تم</span>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loading-text">جاري الحفظ...</div>
+</div>
+
+<script>
+// ================================================================
+// CONFIGURATION — تم ضبطها تلقائياً لحساب هيثم
+// ================================================================
+const GITHUB_USER = 'HaithamFakhry';
+const GITHUB_REPO = 'HaithamFakhry.github.io';
+const BRANCH = 'main';
+
+// ================================================================
+// STATE
+// ================================================================
+let TOKEN = null;
+let projects = [];
+let projectsFileSha = null;      // Required by GitHub API to update a file
+let currentFilter = 'all';
+let currentSearch = '';
+let editingIndex = null;         // null means adding new
+let pendingImageFile = null;     // File object being uploaded
+let pendingImageName = null;     // Suggested name
+
+// ================================================================
+// LOGIN / AUTH
+// ================================================================
+async function login() {
+  const token = document.getElementById('token-input').value.trim();
+  if (!token) {
+    showToast('أدخل الـ Token', 'error');
+    return;
+  }
+  
+  showLoading('جاري التحقق...');
+  
+  try {
+    // Verify token by fetching user info
+    const res = await fetch('https://api.github.com/user', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    
+    if (!res.ok) {
+      hideLoading();
+      showToast('Token غير صحيح', 'error');
+      return;
+    }
+    
+    const user = await res.json();
+    
+    // Store token (localStorage — only this browser)
+    localStorage.setItem('gh_token', token);
+    localStorage.setItem('gh_user', JSON.stringify({
+      name: user.name || user.login,
+      avatar: user.avatar_url
+    }));
+    
+    TOKEN = token;
+    
+    // Switch screens
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app-screen').classList.add('active');
+    document.getElementById('user-name').textContent = user.name || user.login;
+    document.getElementById('user-avatar').src = user.avatar_url;
+    
+    await loadProjects();
+    hideLoading();
+  } catch (err) {
+    hideLoading();
+    showToast('خطأ في الاتصال', 'error');
+    console.error(err);
+  }
+}
+
+function logout() {
+  if (!confirm('تريد الخروج؟')) return;
+  localStorage.removeItem('gh_token');
+  localStorage.removeItem('gh_user');
+  location.reload();
+}
+
+// Check if already logged in
+window.addEventListener('DOMContentLoaded', async () => {
+  const saved = localStorage.getItem('gh_token');
+  if (saved) {
+    TOKEN = saved;
+    const userInfo = JSON.parse(localStorage.getItem('gh_user') || '{}');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app-screen').classList.add('active');
+    document.getElementById('user-name').textContent = userInfo.name || 'User';
+    document.getElementById('user-avatar').src = userInfo.avatar || '';
+    await loadProjects();
+  }
+});
+
+// Allow Enter key to login
+document.getElementById('token-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') login();
+});
+
+// ================================================================
+// LOAD PROJECTS FROM GITHUB
+// ================================================================
+async function loadProjects() {
+  showLoading('جاري تحميل المشاريع...');
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/projects.js?ref=${BRANCH}`,
+      { headers: { 'Authorization': `Bearer ${TOKEN}` } }
+    );
+    
+    if (!res.ok) throw new Error('Failed to load projects.js');
+    
+    const file = await res.json();
+    projectsFileSha = file.sha;
+    
+    // Decode base64 content
+    const content = atob(file.content.replace(/\n/g, ''));
+    const decoded = decodeURIComponent(escape(content));
+    
+    // Extract the PROJECTS array
+    projects = extractProjectsArray(decoded);
+    
+    renderProjects();
+    updateStats();
+    hideLoading();
+  } catch (err) {
+    console.error(err);
+    hideLoading();
+    showToast('فشل التحميل: ' + err.message, 'error');
+  }
+}
+
+function extractProjectsArray(jsText) {
+  // Extract content between PROJECTS = [ and the last ];
+  const match = jsText.match(/const\s+PROJECTS\s*=\s*(\[[\s\S]*?\]);?\s*$/m);
+  if (!match) {
+    // Fallback: try eval pattern
+    const m2 = jsText.match(/const\s+PROJECTS\s*=\s*(\[[\s\S]*\])\s*;/);
+    if (!m2) throw new Error('Could not parse projects.js');
+    return eval('(' + m2[1] + ')');
+  }
+  return eval('(' + match[1] + ')');
+}
+
+function serializeProjects(arr) {
+  const header = `/*
+ * ===============================================================
+ * PROJECTS DATA - Generated from Admin Panel
+ * Edit via the admin panel for best results
+ * ===============================================================
+ */
+
+const PROJECTS = `;
+  
+  const body = JSON.stringify(arr, null, 2);
+  return header + body + ';\n';
+}
+
+async function reloadProjects() {
+  await loadProjects();
+  showToast('تم التحديث', 'success');
+}
+
+// ================================================================
+// RENDER PROJECTS
+// ================================================================
+function renderProjects() {
+  const list = document.getElementById('projects-list');
+  const empty = document.getElementById('empty-state');
+  
+  let filtered = projects;
+  if (currentFilter !== 'all') {
+    filtered = filtered.filter(p => p.category === currentFilter);
+  }
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    filtered = filtered.filter(p => 
+      (p.titleEn || '').toLowerCase().includes(q) ||
+      (p.titleAr || '').includes(currentSearch) ||
+      (p.id || '').toLowerCase().includes(q)
+    );
+  }
+  
+  if (filtered.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  // Determine image base path (relative to admin.html location)
+  const imgBase = 'images/projects/';
+  
+  list.innerHTML = filtered.map((p, i) => {
+    const realIndex = projects.indexOf(p);
+    return `
+      <div class="project-row">
+        <div class="thumb">
+          <img src="${imgBase}${p.image}" alt="${p.titleEn}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwQTI4MzgiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1RjY0OTgiPj88L3RleHQ+PC9zdmc+'">
+        </div>
+        <div class="info">
+          <h3>${escapeHtml(p.titleAr || p.titleEn)}</h3>
+          <div class="title-en">${escapeHtml(p.titleEn || '')}</div>
+          <div class="meta">
+            <span>${escapeHtml(p.categoryAr || p.categoryEn)}</span>
+            <span>${escapeHtml(p.year || '')}</span>
+            <span style="font-family: var(--font-en); opacity: 0.7;">${escapeHtml(p.id)}</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn-icon move-up" onclick="moveProject(${realIndex}, -1)" title="تحريك لأعلى" ${realIndex === 0 ? 'style="opacity:0.3"' : ''}>↑</button>
+          <button class="btn-icon move-down" onclick="moveProject(${realIndex}, 1)" title="تحريك لأسفل" ${realIndex === projects.length - 1 ? 'style="opacity:0.3"' : ''}>↓</button>
+          <button class="btn-icon edit" onclick="openEditModal(${realIndex})" title="تعديل">✏️</button>
+          <button class="btn-icon delete" onclick="deleteProject(${realIndex})" title="حذف">🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function updateStats() {
+  document.getElementById('count-all').textContent = projects.length;
+  document.getElementById('count-campaign').textContent = projects.filter(p => p.category === 'campaign').length;
+  document.getElementById('count-social').textContent = projects.filter(p => p.category === 'social').length;
+  document.getElementById('count-branding').textContent = projects.filter(p => p.category === 'branding').length;
+}
+
+// ================================================================
+// FILTERS & SEARCH
+// ================================================================
+document.querySelectorAll('.stat-box').forEach(box => {
+  box.addEventListener('click', () => {
+    document.querySelectorAll('.stat-box').forEach(b => b.classList.remove('active'));
+    box.classList.add('active');
+    currentFilter = box.getAttribute('data-filter');
+    renderProjects();
+  });
+});
+
+document.getElementById('search-input').addEventListener('input', (e) => {
+  currentSearch = e.target.value.trim();
+  renderProjects();
+});
+
+// ================================================================
+// MOVE PROJECT (reorder)
+// ================================================================
+async function moveProject(index, direction) {
+  const newIndex = index + direction;
+  if (newIndex < 0 || newIndex >= projects.length) return;
+  
+  [projects[index], projects[newIndex]] = [projects[newIndex], projects[index]];
+  renderProjects();
+  await commitProjectsFile('Reorder projects via admin panel');
+}
+
+// ================================================================
+// ADD / EDIT MODAL
+// ================================================================
+function openAddModal() {
+  editingIndex = null;
+  pendingImageFile = null;
+  pendingImageName = null;
+  
+  document.getElementById('modal-title').textContent = 'إضافة مشروع جديد';
+  document.getElementById('project-form').reset();
+  document.getElementById('field-original-id').value = '';
+  document.getElementById('field-original-image').value = '';
+  
+  resetImageUpload();
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function openEditModal(index) {
+  editingIndex = index;
+  pendingImageFile = null;
+  pendingImageName = null;
+  
+  const p = projects[index];
+  document.getElementById('modal-title').textContent = 'تعديل مشروع';
+  document.getElementById('field-original-id').value = p.id;
+  document.getElementById('field-original-image').value = p.image;
+  document.getElementById('field-id').value = p.id || '';
+  document.getElementById('field-category').value = p.category || 'campaign';
+  document.getElementById('field-year').value = p.year || '';
+  document.getElementById('field-title-ar').value = p.titleAr || '';
+  document.getElementById('field-title-en').value = p.titleEn || '';
+  document.getElementById('field-category-ar').value = p.categoryAr || '';
+  document.getElementById('field-category-en').value = p.categoryEn || '';
+  document.getElementById('field-desc-ar').value = p.descAr || '';
+  document.getElementById('field-desc-en').value = p.descEn || '';
+  
+  showImagePreview(`images/projects/${p.image}`);
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+}
+
+function resetImageUpload() {
+  const el = document.getElementById('image-upload');
+  el.classList.remove('has-image');
+  el.innerHTML = `
+    <div class="placeholder-text">
+      <div class="icon">🖼️</div>
+      <div class="text">اضغط هنا لرفع صورة للمشروع</div>
+    </div>
+    <input type="file" id="image-file" accept="image/*" onchange="handleImageSelect(event)">
+  `;
+}
+
+function showImagePreview(src) {
+  const el = document.getElementById('image-upload');
+  el.classList.add('has-image');
+  el.innerHTML = `
+    <div class="preview">
+      <img src="${src}" onerror="this.parentElement.parentElement.innerHTML = '<div class=\\'placeholder-text\\'><div class=\\'icon\\'>⚠️</div><div class=\\'text\\'>لم يتم تحميل الصورة</div></div><input type=\\'file\\' id=\\'image-file\\' accept=\\'image/*\\' onchange=\\'handleImageSelect(event)\\' />'">
+      <div class="change-btn">🔄 تغيير الصورة</div>
+    </div>
+    <input type="file" id="image-file" accept="image/*" onchange="handleImageSelect(event)">
+  `;
+}
+
+function handleImageSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  // Generate a safe filename
+  const ext = file.name.split('.').pop().toLowerCase();
+  const idValue = document.getElementById('field-id').value || 'project-' + Date.now();
+  pendingImageName = `${idValue.replace(/[^a-z0-9\-]/gi, '_')}.${ext}`;
+  pendingImageFile = file;
+  
+  // Show preview from file
+  const reader = new FileReader();
+  reader.onload = (ev) => showImagePreview(ev.target.result);
+  reader.readAsDataURL(file);
+}
+
+// ================================================================
+// SAVE PROJECT
+// ================================================================
+async function saveProject(e) {
+  e.preventDefault();
+  
+  const data = {
+    id: document.getElementById('field-id').value.trim(),
+    category: document.getElementById('field-category').value,
+    year: document.getElementById('field-year').value.trim(),
+    titleAr: document.getElementById('field-title-ar').value.trim(),
+    titleEn: document.getElementById('field-title-en').value.trim(),
+    categoryAr: document.getElementById('field-category-ar').value.trim(),
+    categoryEn: document.getElementById('field-category-en').value.trim(),
+    descAr: document.getElementById('field-desc-ar').value.trim(),
+    descEn: document.getElementById('field-desc-en').value.trim(),
+  };
+  
+  // Determine image filename
+  const originalImage = document.getElementById('field-original-image').value;
+  if (pendingImageFile) {
+    data.image = pendingImageName;
+  } else if (originalImage) {
+    data.image = originalImage;
+  } else {
+    showToast('اختر صورة للمشروع', 'error');
+    return;
+  }
+  
+  showLoading(pendingImageFile ? 'جاري رفع الصورة...' : 'جاري الحفظ...');
+  
+  try {
+    // Step 1: upload image if new
+    if (pendingImageFile) {
+      await uploadImage(pendingImageFile, data.image);
+    }
+    
+    // Step 2: update projects array
+    if (editingIndex === null) {
+      projects.push(data);
+    } else {
+      projects[editingIndex] = data;
+    }
+    
+    // Step 3: commit projects.js
+    await commitProjectsFile(
+      editingIndex === null 
+        ? `Add project: ${data.id}` 
+        : `Update project: ${data.id}`
+    );
+    
+    hideLoading();
+    closeModal();
+    renderProjects();
+    updateStats();
+    showToast(editingIndex === null ? 'تم إضافة المشروع' : 'تم حفظ التعديلات', 'success');
+  } catch (err) {
+    hideLoading();
+    console.error(err);
+    showToast('فشل الحفظ: ' + err.message, 'error');
+  }
+}
+
+// ================================================================
+// DELETE PROJECT
+// ================================================================
+async function deleteProject(index) {
+  const p = projects[index];
+  if (!confirm(`حذف "${p.titleAr || p.titleEn}" نهائياً؟`)) return;
+  
+  showLoading('جاري الحذف...');
+  try {
+    projects.splice(index, 1);
+    await commitProjectsFile(`Delete project: ${p.id}`);
+    renderProjects();
+    updateStats();
+    hideLoading();
+    showToast('تم الحذف', 'success');
+  } catch (err) {
+    hideLoading();
+    console.error(err);
+    showToast('فشل الحذف: ' + err.message, 'error');
+    projects.splice(index, 0, p); // restore
+  }
+}
+
+// ================================================================
+// GITHUB API — Commit file
+// ================================================================
+async function commitProjectsFile(message) {
+  const content = serializeProjects(projects);
+  const contentBase64 = btoa(unescape(encodeURIComponent(content)));
+  
+  const body = {
+    message: message,
+    content: contentBase64,
+    sha: projectsFileSha,
+    branch: BRANCH
+  };
+  
+  const res = await fetch(
+    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/projects.js`,
+    {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+  );
+  
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.message || 'Failed to commit');
+  }
+  
+  const result = await res.json();
+  projectsFileSha = result.content.sha;
+}
+
+async function uploadImage(file, filename) {
+  // Read file as base64
+  const base64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result;
+      resolve(dataUrl.split(',')[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+  
+  const body = {
+    message: `Upload image: ${filename}`,
+    content: base64,
+    branch: BRANCH
+  };
+  
+  const path = `images/projects/${filename}`;
+  
+  // Check if file exists (to include sha)
+  try {
+    const existing = await fetch(
+      `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${BRANCH}`,
+      { headers: { 'Authorization': `Bearer ${TOKEN}` } }
+    );
+    if (existing.ok) {
+      const data = await existing.json();
+      body.sha = data.sha;
+    }
+  } catch (e) { /* file doesn't exist, that's fine */ }
+  
+  const res = await fetch(
+    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`,
+    {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+  );
+  
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.message || 'Failed to upload image');
+  }
+}
+
+// ================================================================
+// UI HELPERS
+// ================================================================
+function showToast(text, type = 'success') {
+  const toast = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  const textEl = document.getElementById('toast-text');
+  
+  toast.className = 'toast show ' + type;
+  icon.textContent = type === 'error' ? '⚠' : (type === 'success' ? '✓' : 'ℹ');
+  textEl.textContent = text;
+  
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+function showLoading(text = 'جاري التحميل...') {
+  document.getElementById('loading-text').textContent = text;
+  document.getElementById('loading-overlay').classList.add('open');
+}
+
+function hideLoading() {
+  document.getElementById('loading-overlay').classList.remove('open');
+}
+
+// Close modal on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Close modal on background click
+document.getElementById('modal-bg').addEventListener('click', (e) => {
+  if (e.target.id === 'modal-bg') closeModal();
+});
+</script>
+
+</body>
+</html>
